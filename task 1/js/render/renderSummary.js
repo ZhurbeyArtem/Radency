@@ -10,8 +10,8 @@ export default function renderSummary() {
 
   activeTask.innerHTML = calculateActive('Task');
   archivedTask.innerHTML = calculateArchived('Task');
-  activeThougth.innerHTML = calculateActive('Random Thought');
-  archivedThougth.innerHTML = calculateArchived('Random Thought');
+  activeThougth.innerHTML = calculateActive('Random-Thought');
+  archivedThougth.innerHTML = calculateArchived('Random-Thought');
   activeIdea.innerHTML = calculateActive('Idea');
   archivedIdea.innerHTML = calculateArchived('Idea');
 }

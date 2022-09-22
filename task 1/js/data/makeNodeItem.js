@@ -38,9 +38,9 @@ export function makeAddedItem(note) {
             }" name='Creation date'>
             <select name="Category" id="categorySelect">
                 <option value="Task" ${note?.category === 'Task' ? 'selected' : ''}>Task</option>
-                <option value="Random Thought" ${
-                  note?.category === 'Random Thought' ? 'selected' : ''
-                }>Random Thought</option>
+                <option value="Random-Thought" ${
+                  note?.category === 'Random-Thought' ? 'selected' : ''
+                }>Random-Thought</option>
                 <option value="Idea" ${note?.category === 'Idea' ? 'selected' : ''}>Idea</option>
             </select>
             <textarea required value="" name="Content" id="contentArea" maxlength="150" cols="30" rows="2"

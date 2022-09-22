@@ -56,7 +56,7 @@ let notes = [
     img: '',
     name: 'shopping list 6',
     creationDate: '2021-04-20',
-    category: 'Random Thought',
+    category: 'Random-Thought',
     content: 'Tomatoes, bread',
     dates: '3/5/2021',
     archived: true,

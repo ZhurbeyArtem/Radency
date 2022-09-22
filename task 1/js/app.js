@@ -2,7 +2,7 @@ import createNote from './func/createNote.js';
 import renderMainTable from './render/renderMainTable.js';
 import renderSummary from './render/renderSummary.js';
 import { archiveAllNotes, deleteAllNotes, getNotes } from './data/notes.js';
-import { renderArchivedTable, updeteArchivedTables } from './func/updeteArchivedTables.js';
+import { renderArchivedTable, updateArchivedTables } from './func/updeteArchivedTables.js';
 
 const mainTableBody = document.querySelector('tbody.main-table-body');
 const mainTableHead = document.querySelector('table.main-table thead');
@@ -49,6 +49,6 @@ deleteAllNotesBtn.addEventListener('click', () => {
 
 Array.from(sumTableBtns).map((btn) =>
   btn.addEventListener('click', (e) =>
-    updeteArchivedTables(e.target.parentElement.parentElement.id),
-  ),
+    updateArchivedTables(e.target.parentElement.parentElement.id)
+   ),
 );
