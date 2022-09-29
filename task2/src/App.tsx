@@ -1,9 +1,9 @@
 import React from 'react';
-import Main from "./page/main";
+import AppRouter from "./utils/router";
 
 
 function App() {
-  return <Main />
+  return <AppRouter />
 }
 
 export default App;
