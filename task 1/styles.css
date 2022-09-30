@@ -1,0 +1,183 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  min-width: 560px;
+  padding: 10px;
+  margin: 40px;
+}
+
+.notes-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  justify-content: flex-start;
+}
+
+.main-table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: separate;
+  border-spacing: 0px 5px;
+}
+.second-table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: separate;
+  border-spacing: 0px 5px;
+}
+
+tbody:before {
+  content: '-';
+  display: block;
+  line-height: 1em;
+  color: transparent;
+}
+
+td {
+  padding: 20px;
+  text-align: left;
+}
+
+thead tr:first-child td:first-child {
+  padding-left: 70px;
+  border-radius: 10px 0px 0px 10px;
+}
+thead tr:first-child td:last-child {
+  padding-right: 40px;
+  border-radius: 0px 10px 10px 0px;
+}
+
+tbody tr td:first-child {
+  border-radius: 10px 0px 0px 10px;
+}
+tbody tr td:last-child {
+  padding-right: 40px;
+  border-radius: 0px 10px 10px 0px;
+}
+
+.header-list {
+  background-color: darkgrey;
+  height: 50px;
+  color: rgb(255, 255, 255);
+  font-size: 1.3rem;
+}
+
+.note-header-icons {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.note-header-icons.btn {
+  justify-content: center;
+}
+
+.note-item {
+  background-color: #2ca3a3;
+  height: 50px;
+  font-size: 1.3rem;
+}
+
+.note-create {
+  align-self: flex-end;
+}
+
+.note-header-icons > i {
+  cursor: pointer;
+  margin: 0px 10px;
+}
+
+.note-info i {
+  font-size: 1.5rem;
+  max-width: 30px;
+  margin-right: 20px;
+  color: white;
+  justify-self: flex-start;
+}
+
+tbody > tr > td.add-note {
+  border-radius: 10px 10px 10px 10px;
+  column-span: all;
+  width: 1000px;
+}
+
+#add-form {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#contentArea {
+  padding: 5px 0px;
+  resize: none;
+  border-radius: 2px;
+  border: 1px solid white;
+  outline: none;
+}
+
+input,
+select {
+  border: 1px solid white;
+  background-color: white;
+  padding: 12px 20px;
+  margin: 8px 0;
+  border-radius: 2px;
+  outline: none;
+}
+
+input[type='date'] {
+  background-color: white;
+  padding: 10px 20px;
+  margin: 8px 0;
+  border-radius: 2px;
+}
+input[type='submit'] {
+  background-color: rgba(52, 190, 64, 0.836);
+  border: 1px solid rgba(46, 189, 58, 0.836);
+  padding: 5px 10px;
+  margin: 8px 0;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+input[type='submit']:hover {
+  background-color: rgb(5, 223, 23);
+  border: 1px solid rgb(130, 236, 141);
+  transition: all 0.3s ease-in;
+}
+
+.btn {
+  cursor: pointer;
+}
+
+table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: separate;
+  border-spacing: 0px 5px;
+}
+
+thead.head {
+  background-color: rgba(0, 87, 128, 0.774);
+}
+
+header.header-list {
+  margin: 25px 0px;
+  border-radius: 10px;
+  display: grid;
+  grid-auto-flow: column;
+  justify-items: center;
+  align-items: center;
+}
+
+header.header-list > span:first-child {
+  padding-left: 100px;
+}
+header.header-list > span {
+  justify-self: flex-start;
+}

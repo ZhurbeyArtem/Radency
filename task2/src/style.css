@@ -1,0 +1,94 @@
+.container{
+    width: 100%;
+    margin: 10px auto;
+    max-width: 1180px;
+    position: relative;
+    font-size: 20px;
+}
+.tbl{
+    width: 100%;
+}
+.tblHeader > tr > th{
+    border: 1px solid black;
+    padding: 5px;
+}
+.tblBody > tr > td{
+    border: 1px solid black;
+    padding: 5px;
+}
+.tblBody > tr > td:last-child{
+    text-align: center;
+}
+.createBtn{
+    margin-top: 10px;
+  position: absolute;
+    right: 0;
+    background: lightgreen;
+}
+.btnBody{
+    margin-left: 5px;
+}
+.headerList {
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-around;
+}
+.archHeader > div{
+    width: 100%;
+    text-align: left;
+    padding-left: 10rem;
+}
+.archHeader{
+    display: flex;
+    width: 100%;
+    margin-bottom: 20px;
+}
+.hidden{
+    display: none;
+}
+/* ------------------------------- */
+.modal{
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background: rgba(0,0,0,0.7);
+}
+
+.modal-content{
+    background: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 25%;
+    font-weight: bold;
+}
+.close{
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    top: -25px;
+    right: -10px;
+}
+.text {
+    display: flex;
+    flex-flow: column;
+}
+.radioBtn{
+    display: flex;
+    justify-content: space-around;
+}
+#add-note-form, #edit-note-form > div{
+    margin-bottom: 8px;
+}
+#add-note-form ,#edit-note-form{
+    text-align: center;
+}
+.closeContainer{
+    position: relative;
+}
