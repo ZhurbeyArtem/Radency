@@ -44,8 +44,8 @@ const CreateComponent = () => {
                             <textarea name="content" id="content" value={values.content}
                                       onChange={(e) => setValues({...values, content: e.target.value})}/>
                         </div>
+                        <p>Please select a note category:</p>
                         <div className='radioBtn'>
-                            <p>Please select a note category:</p>
                             <input type="radio" id="category1" value="Task" name="category" defaultChecked
                                    onChange={(e) => setValues({...values, category: e.target.value})}/>
                             <label htmlFor="category1">Task</label>

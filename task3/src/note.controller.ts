@@ -9,7 +9,7 @@ import {
   Post,
 } from '@nestjs/common';
 import { NoteService } from './note.service';
-import { NoteDto, NoteUpdateDto } from './dto/note.dto';
+import { NoteCreateDto, NoteDto, NoteUpdateDto } from './dto/note.dto';
 import { IStats } from './interface/statistic.interface';
 
 @Controller('notes')
@@ -17,35 +17,35 @@ export class NoteController {
   constructor(private readonly appService: NoteService) {}
 
   @Get('/stats')
-  getStats(): IStats {
-    return this.appService.getStats();
+  async getStats(): Promise<IStats> {
+    return await this.appService.getStats();
   }
 
   @Get()
-  getAll(): NoteDto[] {
-    return this.appService.getAll();
+  async getAll(): Promise<NoteDto[]> {
+    return await this.appService.getAll();
   }
 
   @Get('/:id')
-  getOne(@Param('id', ParseIntPipe) id: number): NoteDto {
+  async getOne(@Param('id', ParseIntPipe) id: number): Promise<NoteDto> {
     return this.appService.getOne(id);
   }
 
   @Delete('/:id')
-  noteDelete(@Param('id', ParseIntPipe) id: number): string {
-    return this.appService.noteDel(id);
+  async noteDelete(@Param('id', ParseIntPipe) id: number): Promise<string> {
+    return await this.appService.noteDel(id);
   }
 
   @Patch('/:id')
-  noteUpdate(
+  async noteUpdate(
     @Param('id', ParseIntPipe) id: number,
     @Body() dto: NoteUpdateDto,
-  ): NoteDto {
-    return this.appService.noteUpdate(id, dto);
+  ): Promise<NoteDto> {
+    return await this.appService.noteUpdate(id, dto);
   }
 
   @Post()
-  noteCreate(@Body() dto: NoteUpdateDto): NoteDto {
-    return this.appService.noteCreate(dto);
+  async noteCreate(@Body() dto: NoteCreateDto): Promise<NoteDto> {
+    return await this.appService.noteCreate(dto);
   }
 }

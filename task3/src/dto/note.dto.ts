@@ -19,7 +19,7 @@ export class NoteDto {
   @IsOptional()
   date?: string;
 }
-export class NoteUpdateDto {
+export class NoteCreateDto {
   @IsString()
   name: string;
 
@@ -31,4 +31,21 @@ export class NoteUpdateDto {
 
   @IsBoolean()
   archived: boolean;
+}
+export class NoteUpdateDto {
+  @IsString()
+  @IsOptional()
+  name?: string;
+
+  @IsString()
+  @IsOptional()
+  category?: string;
+
+  @IsString()
+  @IsOptional()
+  content?: string;
+
+  @IsBoolean()
+  @IsOptional()
+  archived?: boolean;
 }

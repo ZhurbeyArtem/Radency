@@ -1,117 +1,68 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
-import { NoteDto, NoteUpdateDto } from './dto/note.dto';
+import { NoteCreateDto, NoteDto, NoteUpdateDto } from './dto/note.dto';
 import { getActive, getArchive, getData } from './helpers/getData';
 import { IStats } from './interface/statistic.interface';
+import { InjectModel } from '@nestjs/sequelize';
+import { Notes } from './notes.model';
 
 @Injectable()
 export class NoteService {
-  private notes: NoteDto[] = [
-    {
-      id: 1,
-      name: 'todo1',
-      content: 'todo1',
-      category: 'Task',
-      archived: false,
-    },
-    {
-      id: 2,
-      name: 'todo2',
-      content: 'todo2',
-      category: 'Task',
-      archived: true,
-    },
-    {
-      id: 3,
-      name: 'todo3',
-      content: 'todo3',
-      category: 'Idea',
-      archived: false,
-    },
-    {
-      id: 4,
-      name: 'todo4',
-      content: 'todo4',
-      category: 'Random Thought',
-      archived: false,
-    },
-    {
-      id: 5,
-      name: 'todo5',
-      content: 'todo5',
-      category: 'Random Thought',
-      archived: false,
-    },
-    {
-      id: 6,
-      name: 'todo6',
-      content: 'todo6',
-      category: 'Random Thought',
-      archived: true,
-    },
-    {
-      id: 7,
-      name: 'todo7',
-      content: 'todo7',
-      category: 'Idea',
-      archived: true,
-    },
-  ];
+  constructor(@InjectModel(Notes) private notesRepository: typeof Notes) {}
 
-  getOne(id: number) {
-    return this.notes.filter((note) => note.id === id)[0];
+  async getOne(id: number) {
+    return await this.notesRepository.findOne({ where: { id } });
   }
 
-  getAll(): NoteDto[] {
-    return this.notes;
+  async getAll(): Promise<NoteDto[]> {
+    return await this.notesRepository.findAll();
   }
 
-  getStats() {
+  async getStats() {
+    const test = await this.getAll();
     const stats: IStats = {
       active: {
-        Task: getActive(this.notes, 'Task'),
-        Idea: getActive(this.notes, 'Idea'),
-        'Random Thought': getActive(this.notes, 'Random Thought'),
+        Task: getActive(test, 'Task'),
+        Idea: getActive(test, 'Idea'),
+        'Random Thought': getActive(test, 'Random Thought'),
       },
       archive: {
-        Task: getArchive(this.notes, 'Task'),
-        Idea: getArchive(this.notes, 'Idea'),
-        'Random Thought': getArchive(this.notes, 'Random Thought'),
+        Task: getArchive(test, 'Task'),
+        Idea: getArchive(test, 'Idea'),
+        'Random Thought': getArchive(test, 'Random Thought'),
       },
     };
 
     return stats;
   }
 
-  noteDel(id: number) {
-    const note = this.notes.find((note) => note.id === id);
+  async noteDel(id: number): Promise<string> {
+    const note = await this.notesRepository.findOne({ where: { id } });
     if (!note)
       throw new HttpException(
         'note with this id already deleted',
         HttpStatus.BAD_REQUEST,
       );
-    this.notes = this.notes.filter((note) => note.id !== id);
+    await note.destroy();
     return 'success';
   }
 
-  noteUpdate(id: number, obj: NoteUpdateDto) {
-    const note = this.notes.find((note) => note.id === id);
+  async noteUpdate(id: number, obj: NoteUpdateDto): Promise<NoteDto> {
+    const note = await this.notesRepository.findOne({ where: { id } });
     if (!note)
       throw new HttpException(
         'note with this id doesn`t find',
         HttpStatus.BAD_REQUEST,
       );
-    for (const key in obj) note[key] = obj[key];
+    await note.update(obj);
     return note;
   }
 
-  noteCreate(obj: NoteUpdateDto): NoteDto {
+  async noteCreate(obj: NoteCreateDto): Promise<NoteDto> {
     const { content } = obj;
     const note = {
-      id: this.notes.length + 1,
       ...obj,
       date: getData(content),
     };
-    this.notes.push(note);
-    return note;
+    return await this.notesRepository.create(note);
   }
 }

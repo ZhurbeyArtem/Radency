@@ -4,6 +4,7 @@ import { ValidationPipe } from '@nestjs/common';
 
 async function start() {
   const app = await NestFactory.create(NoteModule);
+  const PORT = process.env.PORT || 5000;
   app.useGlobalPipes(
     new ValidationPipe({
       transform: true,
@@ -11,6 +12,6 @@ async function start() {
       forbidNonWhitelisted: true,
     }),
   );
-  await app.listen(3000, () => console.log('server started'));
+  await app.listen(PORT, () => console.log(`server started on ${PORT}`));
 }
 start();

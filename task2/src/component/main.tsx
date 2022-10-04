@@ -51,7 +51,6 @@ const MainComponent = () => {
                 </tbody>
 
             </table>
-            {/*<button onClick={() => navigate('/create')} className="createBtn">Create note</button>*/}
             <CreateComponent />
            <header className="headerList">
                 <span>Category</span>
