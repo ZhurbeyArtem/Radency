@@ -1,58 +1,42 @@
 import React from 'react';
-import {useNavigate} from "react-router-dom";
-import {BsFillArchiveFill, BsFillTrashFill, BsPencilFill} from 'react-icons/bs'
-import {useDispatch, useSelector} from "react-redux";
-
+import {BsFillArchiveFill, BsFillTrashFill } from 'react-icons/bs'
+import { useSelector} from "react-redux";
 import type {RootState} from "../utils/store";
-import '../style.css'
-import {archNote, delNote} from "../utils/slicer";
+
 import Archived from "./archived";
 import CreateComponent from "./create";
+import TableTr from "./tableTr";
+
 
 
 const MainComponent = () => {
-    const navigate = useNavigate()
+
     const {notes} = useSelector((state: RootState) => state.notes)
 
-    const dispatch = useDispatch()
     return (
         <div className="container">
-            <table className="tbl">
+            <table className="w-full">
                 <thead className="tblHeader">
-                <tr>
+                <tr className='divide-x space-x-2'>
                     <th>Name</th>
                     <th>Created</th>
                     <th>Category</th>
                     <th>Content</th>
                     <th>Dates</th>
-                    <th><BsFillArchiveFill/> <BsFillTrashFill/></th>
+                    <th><BsFillArchiveFill className='inline'/> <BsFillTrashFill className='inline'/></th>
                 </tr>
                 </thead>
                 <tbody className="tblBody">
-                {notes.map(e =>
-                    e.archived === false &&
-                    <tr key={e.id}>
-                        <td>{e.name}</td>
-                        <td>{e.created}</td>
-                        <td>{e.category}</td>
-                        <td>{e.content}</td>
-                        <td>{e.dates}</td>
-                        <td>
-                            <button onClick={() => dispatch(archNote(e.id))}><BsFillArchiveFill/></button>
-                           <button className='btnBody' onClick={() => navigate(`/update/${e.id}`)}><BsPencilFill/></button>{/*//модалку над*/}
-                            <button className='btnBody' onClick={() => dispatch(delNote(e.id))}><BsFillTrashFill/>
-                            </button>
-
-
-                        </td>
-
-                    </tr>
+                {
+                    notes.map((item) =>
+                         item.archived === false &&
+                        <TableTr key={item.id} {...item}/>
                 )}
                 </tbody>
 
             </table>
             <CreateComponent />
-           <header className="headerList">
+           <header className="flex justify-around font-bold border-2 mt-14 mb-5">
                 <span>Category</span>
                 <span>Active</span>
                 <span>Archived</span>

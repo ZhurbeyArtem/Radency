@@ -30,22 +30,21 @@ const UpdateComponent = () => {
         navigate('/')
     }
     return (
-        <div>
-            <div className='modal'>
-                <div className="modal-content">
+            <div className='update flex items-center justify-center h-screen'>
+                <div className="rounded-lg p-2 ring-blue-500 ring-2 w-1/3">
                     <form id="edit-note-form" onSubmit={handleEditNote}>
-                        <div>Update</div>
+                        <div className='border-b-2 pb-1'>Update</div>
                         <div className="text">
                             <label htmlFor="name2">Name:</label>
-                            <input type="text" name="name" id="name2" required value={values.name}
+                            <input className='border-2 p-1.5' type="text" name="name" id="name2" required value={values.name}
                                    onChange={(e) => setValues({...values, name: e.target.value})}/>
                         </div>
                         <div className="text">
                             <label htmlFor="content2">Content:</label>
-                            <textarea name="content" id="content2" required value={values.content}
+                            <textarea className='border-2 p-1.5' name="content" id="content2" required value={values.content}
                                       onChange={(e) => setValues({...values, content: e.target.value})}/>
                         </div>
-                        <p>Please select a note category:</p>
+                        <p className='pb-2'>Please select a note category:</p>
                         <div className='radioBtn'>
 
                             {
@@ -69,11 +68,10 @@ const UpdateComponent = () => {
                                 )
                             }
                         </div>
-                        <button type='submit'>Save</button>
+                        <button type='submit' className='bg-emerald-400  p-1.5 rounded-lg'>Save</button>
                     </form>
                 </div>
             </div>
-        </div>
     );
 };
 

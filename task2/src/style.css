@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 .container{
     width: 100%;
     margin: 10px auto;
@@ -5,13 +9,7 @@
     position: relative;
     font-size: 20px;
 }
-.tbl{
-    width: 100%;
-}
-.tblHeader > tr > th{
-    border: 1px solid black;
-    padding: 5px;
-}
+
 .tblBody > tr > td{
     border: 1px solid black;
     padding: 5px;
@@ -20,19 +18,11 @@
     text-align: center;
 }
 .createBtn{
-    margin-top: 10px;
   position: absolute;
     right: 0;
     background: lightgreen;
 }
-.btnBody{
-    margin-left: 5px;
-}
-.headerList {
-    margin-top: 50px;
-    display: flex;
-    justify-content: space-around;
-}
+
 .archHeader > div{
     width: 100%;
     text-align: left;
